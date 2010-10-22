@@ -1,0 +1,17 @@
+#import "OpenGLCommon.h"
+
+const Vertex3D <%= model_name %>_positions[] = {
+  <% positions.each_with_index do |pos, i| %><%= "{#{pos[:x]}, #{pos[:y]}, #{pos[:z]}}#{"," unless i == positions.count - 1}" %> <%= "\n" if i % 2 == 0 %><% end %>
+};
+
+const Vertex3D <%= model_name %>_normals[] = {
+  <% normals.each_with_index do |norm, i| %><%= "{#{norm[:x]}, #{norm[:y]}, #{norm[:z]}}#{"," unless i == normals.count - 1}" %> <%= "\n" if i % 2 == 0 %><% end %>
+};
+
+const GLFloat <%= model_name %>_texture_coords[] = {
+  <% coords.each_with_index do |coord, i| %><%= "#{coord}#{"," unless i == coords.count - 1}" %> <%= "\n" if i % 3 == 0 %><% end %>
+};
+
+const GLushort <%= model_name %>_indices[] = {
+  <% indices.each_with_index do |idx, i| %><%= "#{idx}#{"," unless i == indices.count - 1}" %> <%= "\n" if i % 3 == 0 %><% end %>
+};
